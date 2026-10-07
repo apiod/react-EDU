@@ -14,7 +14,13 @@ function Ex01_Count() {
       <h2>숫자증가</h2>
       <button onClick={minus}>빼기</button>
       <span> 숫자{stack} </span>
-      <button onClick={plus}>더하기</button>
+      <button
+        onClick={() => {
+          setStack(stack + 1);
+        }}
+      >
+        더하기
+      </button>
     </div>
   );
 }
