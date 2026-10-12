@@ -8,13 +8,28 @@ function Ex05_Ref() {
     <>
       <div>useRef vs useState 차이</div>
       <p>
+        {/* eslint-disable-next-line */}
         useRef: {countRef.current}
-        <button> ref Up</button>
+        <button
+          onClick={() => {
+            countRef.current = countRef.current + 1;
+          }}
+        >
+          {" "}
+          ref Up
+        </button>
       </p>
       <hr />
       <p>
         useState: {count}
-        <button> state Up</button>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          {" "}
+          state Up
+        </button>
       </p>
     </>
   );

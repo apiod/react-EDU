@@ -1,9 +1,10 @@
-import "./App.css";
 import Ex01_Effect from "./components/Ex01_Effect";
 import Ex02_Effect from "./components/Ex02_Effect";
 import Ex03_Memo from "./components/Ex03_Memo";
 import Ex04_Ref from "./components/Ex04_Ref";
 import Ex05_Ref from "./components/Ex05_Ref";
+import Ex06_Ref from "./components/Ex06_Ref";
+import Context01 from "./components/Ex07_Context01";
 
 function App() {
   return (
@@ -21,7 +22,13 @@ function App() {
       {/* <Ex04_Ref /> */}
       {/*  */}
       {/* 5. useRef vs useState 차이 */}
-      <Ex05_Ref />
+      {/* <Ex05_Ref /> */}
+      {/* 6. useRef vs useState vs let 차이 */}
+      {/* <Ex06_Ref />
+      <h3 style={{ color: "red" }}>Ex06컴포넌트 위,아래 두 번 넣기</h3>
+      <Ex06_Ref /> */}
+
+      <Context01 />
     </>
   );
 }

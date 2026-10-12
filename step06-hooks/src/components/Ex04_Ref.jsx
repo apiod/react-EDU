@@ -4,6 +4,7 @@ function Ex04_Ref() {
   console.log("Ex04_Ref 랜더링");
   const inputRef = useRef();
   //undefined뜨는 이유는 input태그에 ref가 아직 안읽어졌기 때문에
+  // eslint-disable-next-line
   console.log(inputRef);
 
   useEffect(() => {
