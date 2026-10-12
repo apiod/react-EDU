@@ -1,16 +1,21 @@
-# React + Vite
+# TodoList 최적화
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## useMemo, React.memo, useContext를 이용해서 최적화 하기
 
-Currently, two official plugins are available:
+#### useMemo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+컴포넌트 내부에서 연산의 결과를 저장해두고, 의존성이 바뀌지 않으면 이전 결과를 재사용 함.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#### React.memo
 
-## Expanding the ESLint configuration
+함수형 컴포넌트를 전체를 감싸서 props가 바뀌지 않으면 다시 렌더링하지 않음.
+컴포넌트가 같은 props로 반복 렌더링될 때 불필요한 렌더링을 방지하기 위해 사용
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+#### useContext
+
+컴포넌트 간의 데이터를 전달하는 props는 props Drilling이라고 컴포넌트간에 전달을 해야하는 단점이 있다.  
+필요한 곳에서 useContext를 이용해서 그때만 쓸 수 있도록 하는것이 useContext다.
