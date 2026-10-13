@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>callback hell이란?</h1>
+    <script>
+      //   console.log("1. 시작하기");
+      //   //비동기함수
+      //   setTimeout(() => {
+      //     console.log("하나");
+      //   }, 2000);
+      //   setTimeout(() => {
+      //     console.log("둘");
+      //   }, 1000);
+      //   setTimeout(() => {
+      //     console.log("셋");
+      //   }, 1500);
+      //   console.log("끝");
+
+      ////////위의 비동기 작업을비동기 작업안에서 순서대로 동기적으로 실행해야한다.
+      setTimeout(() => {
+        console.log("하나");
+        setTimeout(() => {
+          console.log("둘");
+          setTimeout(() => {
+            console.log("셋");
+            console.log("끝");
+          }, 1500);
+        }, 1000);
+      }, 2000);
+      //들여쓰기가 깊어진다....
+    </script>
+  </body>
+</html>
