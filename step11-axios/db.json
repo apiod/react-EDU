@@ -1,7 +1,50 @@
 {
   "posts": [
-    { "id": 1, "title": "Hello React", "author": "길동" },
-    { "id": 2, "title": "Axios Test", "author": "조이" }
+    {
+      "id": "1",
+      "title": "Hello React",
+      "author": "길동"
+    },
+    {
+      "id": "2",
+      "title": "Axios Test",
+      "author": "조이"
+    },
+    {
+      "title": "123",
+      "author": "123",
+      "id": "-4kgs0s6Lnc"
+    },
+    {
+      "title": "ㅂㅈㄷ",
+      "author": "ㅁㄴㅇ",
+      "id": "XvYH_qKky4E"
+    },
+    {
+      "title": "ㅂㅈㄷ",
+      "author": "ㅁㅁㅁ",
+      "id": "hWxRdILeQrk"
+    }
   ],
-  "users": [{}]
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz"
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv"
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

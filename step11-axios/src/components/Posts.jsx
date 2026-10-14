@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import axiosInstance from "../api/axiosInstance";
 
 function Posts() {
   const SERVER_API = import.meta.env.VITE_SERVER_API;
   const [posts, setPosts] = useState([]);
   console.log("SERVER_API :>> ", SERVER_API);
   useEffect(() => {
-    axios.get(SERVER_API + "/posts").then((res) => setPosts(res.data));
+    // axios.get(SERVER_API + "/posts").then((res) => setPosts(res.data));
+    axiosInstance.get("/posts").then((res) => setPosts(res.data));
   }, []);
 
   return (
