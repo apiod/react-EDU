@@ -28,22 +28,39 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Leanne Graham",
-      "username": "Bret",
       "email": "Sincere@april.biz"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Ervin Howell",
-      "username": "Antonette",
       "email": "Shanna@melissa.tv"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Clementine Bauch",
-      "username": "Samantha",
       "email": "Nathan@yesenia.net"
+    },
+    {
+      "name": "asd",
+      "email": "asd",
+      "id": "sm5eX0JN1u4"
+    },
+    {
+      "name": "zxc",
+      "email": "zxc",
+      "id": "XLKmjZDcGQM"
+    },
+    {
+      "name": "qwe",
+      "email": "asd",
+      "id": "8rgaXEnguAo"
+    },
+    {
+      "name": "ss",
+      "email": "ss",
+      "id": "whwH0UrgeNY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

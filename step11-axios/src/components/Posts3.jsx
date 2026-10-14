@@ -38,7 +38,7 @@ function Post3() {
   };
   const updatePosts = async () => {
     const key1 = 1;
-    const re = await axiosInstance.delete(`/posts/${key1}`);
+    const re = await axiosInstance.put(`/posts/${key1}`);
     console.log(re);
     selectAll();
   };
@@ -59,14 +59,17 @@ function Post3() {
       <button onClick={insert}>추가</button>
 
       <ul>
-        {posts.map((p) => (
-          <li key={p.id}>
-            {p.id} - {p.title} - {p.author}
-            <button onClick={deletePosts} key={p.id}>
-              삭제
-            </button>
-          </li>
-        ))}
+        {posts.map((p) => {
+          console.log(p);
+          return (
+            <li key={p.id}>
+              {p.id} - {p.title} - {p.author}
+              <button onClick={deletePosts} key={p.id}>
+                삭제
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

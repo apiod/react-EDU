@@ -1,12 +1,15 @@
-import React, { useEffect, useReducer } from "react";
-import axiosInstance from "../api/axiosInstance";
+import React, { useEffect, useReducer, useState } from "react";
+import axiosInstance, { dataJson, adduser } from "../api/axiosInstance";
 
 function Users() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const reducer = (prev, action) => {
     switch (action.type) {
+      case "read":
+        return action.data;
       case "add":
         return [...prev, action.data];
-      case "read":
       case "update":
         return prev;
       case "delete":
@@ -17,53 +20,114 @@ function Users() {
         return prev;
     }
   };
-  const [users, dispatch] = useReducer(reducer, {});
-  useEffect(() => {
-    readUsers;
-  }, []);
+  const [users, dispatch] = useReducer(reducer, []);
+
   // addUsers
-  const addUsers = ({ id, name, username, email }) => {
+  const addUsers = async () => {
     const data = {
-      id,
-      name,
-      username,
-      email,
+      name: name,
+      email: email,
     };
+    const re = await axiosInstance.post(`/users`, data);
+    console.log(re);
     dispatch({
       type: "add",
-      data,
+      data: re,
     });
+    setName("");
+    setEmail("");
+    readUsers();
   };
   // readUsers
-  const readUsers = () => {
+  const readUsers = async () => {
+    const re = await dataJson("users");
     dispatch({
       type: "read",
+      data: re.data,
     });
   };
+  useEffect(() => {
+    readUsers();
+  }, []);
   // updateUsers
-  const updateUsers = (targetID) => {
+  const updateUsers = async (targetID) => {
+    const data = {
+      name: name,
+      email: email,
+    };
+    const re = await axiosInstance.put(`/users/${targetID}`, data);
+    console.log(re);
+    setName("");
+    setEmail("");
     dispatch({
       type: "update",
       data: targetID,
     });
+    readUsers();
   };
   // deleteUsers
-  const deleteUsers = (targetID) => {
+  const deleteUsers = async (targetID) => {
+    const re = await axiosInstance.delete(`/users/${targetID}`);
+    console.log(re);
     dispatch({
       type: "delete",
       data: targetID,
     });
+    readUsers();
+  };
+  const check = () => {
+    readUsers();
+    console.log(users);
   };
 
   return (
     <>
-      <div>Users</div>
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="userName" />
-      <input type="email" placeholder="email" />
+      <h1>Users</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          value={name}
+        />
+        <input
+          type="email"
+          placeholder="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          value={email}
+        />
+      </div>
       <button onClick={addUsers}> 추가 </button>
-      <button onClick={updateUsers}> 수정 </button>
-      <button onClick={deleteUsers}> 삭제 </button>
+      <button onClick={check}> 체크 </button>
+      <ul>
+        {users.map((v) => {
+          return (
+            <li key={v.id}>
+              {v.id} / {v.name} / {v.email} /
+              <button
+                onClick={() => {
+                  updateUsers(v.id);
+                }}
+              >
+                {" "}
+                수정{" "}
+              </button>
+              <button
+                onClick={() => {
+                  deleteUsers(v.id);
+                }}
+              >
+                {" "}
+                삭제{" "}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
