@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>fetch()함수 - 외부와 통신하기</h1>
+    <button onclick="selectAllUsers()">데이터 가져오기</button>
+
+    <script>
+      const selectAllUsers = () => {
+        const re = fetch(`https://jsonplaceholder.typicode.com/users`);
+        console.log(re);
+        re.then((result) => {
+          console.log(result);
+          //   console.log(result.json()); //promise객체로 넘어온다.
+          return result.json();
+        })
+          .then((resultJson) => {
+            console.log(resultJson);
+            resultJson.forEach((user) => {
+              console.log(`${user.id} / ${user.name} / ${user.address.city}`);
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    </script>
+  </body>
+</html>

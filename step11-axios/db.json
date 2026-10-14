@@ -1,0 +1,7 @@
+{
+  "posts": [
+    { "id": 1, "title": "Hello React", "author": "길동" },
+    { "id": 2, "title": "Axios Test", "author": "조이" }
+  ],
+  "users": [{}]
+}
