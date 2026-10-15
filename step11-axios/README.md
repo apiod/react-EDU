@@ -1,16 +1,78 @@
-# React + Vite
+# axios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+비동기 작업을 위한 axios사용
 
-Currently, two official plugins are available:
+```bash
+npm i axios
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# json-server
 
-## React Compiler
+1. 설치
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install -D json-server
+```
 
-## Expanding the ESLint configuration
+devDependency로 설치하는게 일반적이다.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. 가짜 db파일 만들기
+
+프로젝트 루트에 `db.json`생성
+
+```json
+{
+  "posts": [
+    { "id": 1, "title": "Hello React" },
+    { "id": 2, "title": "Axios Test" }
+  ]
+}
+```
+
+3.  json-server 실행설정
+
+`package.json`에 scripts부분에 아래를 추가한다.
+
+```json
+"scripts": {
+  "dev":"vite",
+  "server":"json-server --watch db.json --port 4000"
+}
+```
+
+```bash
+npm run dev
+npm run server
+```
+
+두 개를 실행해야한다.
+
+3. 0. CORS 문제 해결 (선택)
+
+보통 json-server는 기본적으로 CORS 허용이라 문제 없음 👍
+
+하지만 필요하면:
+
+```bash
+json-server --watch db.json --port 4000 --cors
+```
+
+3. 1. 두 개를 동시에 실행하기
+
+```bash
+npm install -D concurrently
+```
+
+```json
+"scripts": {
+  "dev":"vite",
+  "server":"json-server --watch db.json --port 4000",
+  "start": "concurrently \"npm run dev\" \"npm run server\""
+}
+```
+
+```bash
+npm run start
+```
+
+로 프로젝트, json-server를 동시에 실행 할 수 있다.
