@@ -6,12 +6,22 @@ import "./App.css";
 
 // store에서 정의한 액션 생성자(import한 slice 액션들)
 import { down, incrementByAmount, up } from "./redux/store";
+import Cart from "./components/Cart";
 
 function App() {
-  const no = useSelector((state) => {
-    // console.log(state);
-    return state.count.no;
-  });
+  console.log("App lendering...");
+  const no = useSelector(
+    (state) => {
+      // console.log(state);
+      return state.count.no;
+    },
+    // { //변경사항이있는지 체크해서 콘솔에 표시하게 하는것
+    //   devModeChecks: {
+    //     stabilityCheck: "never",
+    //     identityFunctionCheck: "never",
+    //   },
+    // },
+  );
   const dispatch = useDispatch();
   // '빼기' 버튼 클릭 시 down 액션을 디스패치 (no - 1)
   const minusFn = () => {
@@ -38,6 +48,9 @@ function App() {
         {/* 5만큼 증가시키는 커스텀 액션 실행 */}
         <button onClick={() => dispatch(incrementByAmount(5))}>5씩 증가</button>
       </div>
+      <hr />
+
+      <Cart />
     </>
   );
 }
