@@ -1,12 +1,39 @@
-# React + Vite
+# redux TodoList
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+기존 useContext를 이용한 TodoList를  
+redux를 이용한 todoList로 변환
 
-Currently, two official plugins are available:
+```javascript
+<APP/> //은 기존 useContext
+<Exam/> //은 redux를 이용한 것
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```javascript
+//store.js
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+const Slice명 = createSlice({
+  name: "todos",
+  initialState: 초기 값,
+  reducers: {
+    구현함수명:() => {
+    },
+    구현함수명1: (state,action) => {
+        state//현재 값
+        action.payload //인자 값
+    }
+    ...}
+})
+export const{구현함수명} =Slice명.actions;
+export default configureStore({
+  reducer: {
+    todos: Slice명.reducer,
+  },
+});
+```
 
-## Expanding the ESLint configuration
+```javascript
+import { 구현함수명 } from "../redux/store";
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+const dispatch = useDispatch();
+dispatch(구현함수명(인자값)); //
+```
