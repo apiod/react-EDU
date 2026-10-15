@@ -63,6 +63,8 @@ json-server --watch db.json --port 4000 --cors
 npm install -D concurrently
 ```
 
+`package.json`
+
 ```json
 "scripts": {
   "dev":"vite",
