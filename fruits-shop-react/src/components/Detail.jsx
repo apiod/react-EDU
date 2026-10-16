@@ -28,12 +28,13 @@ const Detail = (props) => {
     return <div>해당 상품이 존재하지 않습니다.</div>;
   }
   const { id, imgUrl, title, content, price } = selproduct;
+  console.log(selproduct);
   console.log("내가 선택한 상품은: " + id + " " + title);
   return (
     <div className={"container start " + fade2}>
       <div className="row">
         <div className="col-md-6">
-          <img src={`./${imgUrl}`} width="100%" alt={title} />
+          <img src={`/${imgUrl}`} width="100%" alt={title} />
         </div>
         <div className="col-md-6">
           <h5 className="pt-5">{title}</h5>

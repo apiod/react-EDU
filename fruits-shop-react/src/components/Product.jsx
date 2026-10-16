@@ -12,7 +12,7 @@ const Product = (props) => {
         }}
         className="c1"
       >
-        <img src={`./${imgUrl}`} width="80%" />
+        <img src={`${imgUrl}`} width="80%" />
         <h5 style={{ marginTop: "10px" }}>{title}</h5>
         <p>{content}</p>
         <span>{price}</span>
