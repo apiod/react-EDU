@@ -1,16 +1,33 @@
-# React + Vite
+# 과일 상점
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 목적
 
-Currently, two official plugins are available:
+원래 과제가 github.io를 이용해서 dist파일 배포 하는것.  
+하지만 포트폴리오를 유지한 체로 과제 파일을 업로드 하고  
+a태그를 이용해서 링크를 연결하고 싶었음.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 문제발생
 
-## React Compiler
+문제는 github.io는 순수html +js를 이용해서 빌드가 되고  
+과일상점 자체는 react를 기반으로 배포되어  
+a태그의 herf ={"./dist/index.html"}가 연결이 되지만  
+contents가 보이지 않는 현상이 발생
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 문제해결
 
-## Expanding the ESLint configuration
+netlify 를 이용해서 무료 page를 페이지를 배포하는 방안으로 수정  
+a태그의 herf를 해당 netlify로 빌드된 페이지로 수정
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+### 사용방법
+
+github에 원하는 원격 저장소를 선택한 다음
+base directory를 작성 후
+
+build command 에 npm run build 작성  
+Publish directory 에 dist(build하고 생성된 파일)작성
+
+deploy버튼 클릭
+
+<a herf="https://apiod-fruitshop-react.netlify.app/">해당 주소 이동→</a>
