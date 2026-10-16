@@ -3,6 +3,10 @@
 기존 useContext를 이용한 TodoList를  
 redux를 이용한 todoList로 변환
 
+```bash
+npm i @reduxjs/toolkit react-redux
+```
+
 ```javascript
 <APP/> //은 기존 useContext
 <Exam/> //은 redux를 이용한 것
